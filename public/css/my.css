@@ -1,0 +1,40 @@
+/* собственная дополнительная таблица стилей для расширения классов bootdtrap4*/
+body {font-family: 'Nunito', sans-serif;background-color: #f8f9fa}
+a {color:#0056b3}
+a:active, a:visited, a:hover {text-decoration:none;color:#0056b3}
+footer {font-size:0.7em !important;position:fixed !important;bottom:0 !important;background-color:#f8f9fa!important}
+footer p {margin:0 auto !important}
+table tr {display:flex; width:100%}
+.id {min-width:65px; max-width:65px}
+.name {min-width:114px; max-width:100px;}
+.w35 {min-width:35px; max-width:35px;overflow-x:auto}
+.w45 {min-width:45px; max-width:45px;overflow-x:auto;overflow-y:auto}
+.w55 {min-width:55px; max-width:55px;overflow-x:auto}
+.w60 {min-width:60px; max-width:60px;overflow-x:auto}
+.w68 {min-width:68px; max-width:68px;overflow-x:auto;overflow-y:auto;}
+.w70 {min-width:70px; max-width:70px;overflow-x:auto;overflow-y:auto;}
+.w80 {min-width:80px; max-width:80px;overflow-x:auto}
+.w150 {min-width:150px;max-width:150px;overflow-x:auto;overflow-y:auto;text-align:justify;}
+.date {min-width:120px; max-width:120px;overflow-x:auto;overflow-y:auto}
+.risk {min-width:50px; max-width:50px}
+.actions {min-width:160px;max-width:16px}
+.action2{min-width:80px; max-width:80px;}
+.wordbreak {overflow-x:auto;overflow-y:auto;word-break:break-all}
+.nooverflow {overflow-x: hidden}
+.centered {margin:auto}
+.h100 {max-height:100px}
+.iframe-main{border:none;height:270px;width:40%;position:absolute;top:185px;left:450px}
+.iframe-patient{border:none;height:378px;width:48.2%;position:absolute;top:70px;left:787px}
+.specified1{min-width:100%;margin:auto}
+.specified2{margin:0 16%;width:100%}
+.contain-search{float:left;min-width:39%}
+.specified3{float:left;padding:15px 15px 0 15px}
+.specified4{float:left;padding:15px 15px 0 0}
+.contain-links{float:left;padding:15px 15px 15px 5px}
+.inline-block{display:inline-block;}
+.contain-links a{color:#fff}
+.my-table{width:51.8%}
+.scrollable{max-height: 100px}
+.autoalign {width:100%;margin:auto; text-align: center}
+.align-center {max-width: 50%;margin:auto}
+#welcome {margin:15%}
