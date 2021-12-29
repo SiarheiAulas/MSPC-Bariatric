@@ -143,5 +143,8 @@
         <!--Отображает список страниц при количестве записей более 50-->
         {{$patients->links()}}
 </div>
+<div class="records-count">
+   Records found: {{$patients->count()}}
+</div>
 <x-footer/>
 @endsection 

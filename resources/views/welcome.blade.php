@@ -8,9 +8,9 @@
         <h2><a href="{{Route('patients.index')}}" class="text-sm text-gray-700 dark:text-gray-500">Main</a></h2>
      @else
         <h2><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500">Log in</a></h2>
-        @if (Route::has('register'))
+        <!--@if (Route::has('register'))
         <h2><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a></h2>
-        @endif
+        @endif-->
         @endauth
     @endif
 </div>

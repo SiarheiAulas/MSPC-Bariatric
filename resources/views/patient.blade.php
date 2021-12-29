@@ -181,5 +181,8 @@
     </table>
     <br>
 </div>
+<div class="records-count">
+   Records found: {{$flwups->count()}}
+</div>
 <x-footer/>
 @endsection
