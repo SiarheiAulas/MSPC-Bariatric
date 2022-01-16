@@ -106,6 +106,10 @@
             <input type="text", class="form-control", id="ca", name="ca", placeholder="Current level", value="{{$flwup->ca}}">
         </div>
         <div class="col-2">
+            <label for="ca_ion", class="form-label">Calcium (ionized)</label>
+            <input type="text", class="form-control", id="ca_ion", name="ca_ion", placeholder="Current level", value="{{$flwup->ca_ion}}">
+        </div>
+        <div class="col-2">
             <label for="cl", class="form-label">Chloride</label>
             <input type="text", class="form-control", id="cl", name="cl", placeholder="Current level", value="{{$flwup->cl}}">
         </div>

@@ -25,9 +25,9 @@ class PrimaryDataStoreRequest extends FormRequest
     {
         return [
              'id'=>'required|numeric',
-             'surname'=>'required|alpha|min:2',
-             'firstname'=>'required|alpha|min:2',
-             'lastname'=>'nullable|alpha|min:2',
+             'surname'=>'required|alpha_dash|min:2',
+             'firstname'=>'required|alpha_dash|min:2',
+             'lastname'=>'nullable|alpha_dash|min:2',
              'sex'=>'required|alpha|min:1|max:1',
              'phone'=>'nullable',
              'country'=>'required|alpha|min:2|max:30',

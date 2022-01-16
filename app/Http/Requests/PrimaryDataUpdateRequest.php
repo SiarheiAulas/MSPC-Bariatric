@@ -24,9 +24,9 @@ class PrimaryDataUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-             'surname'=>'required|alpha|min:2',
-             'firstname'=>'required|alpha|min:2',
-             'lastname'=>'nullable|alpha|min:2',
+             'surname'=>'required|alpha_dash|min:2',
+             'firstname'=>'required|alpha_dash|min:2',
+             'lastname'=>'nullable|alpha_dash|min:2',
              'sex'=>'required|alpha|min:1|max:1',
              'phone'=>'nullable|numeric',
              'country'=>'required|alpha|min:2|max:30',

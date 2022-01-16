@@ -85,6 +85,7 @@
         <div class="col-12 text-justify">
             <a href="{{Route('patients.create')}}">Add primary patient data</a>
         </div>
+        <div class="pagination-center">{{$patients->links()}}</div>
         <!--Таблица основных данных пациентов. Данные из модели передаются контроллером-->
         <table class="table table-hover table-bordered table-responsive", width="100%">
             <tr>
@@ -120,7 +121,7 @@
                 <td class="w45 nooverflow">{{$patient->height}}</td>
                 <td class="w70 wordbreak">{{$patient->country}}</td>
                 <td class="w70 wordbreak h100">{{$patient->adress}}</td>
-                <td class="w70 wordbreak">{{$patient->phone}}</td>
+                <td class="w70 wordbreak h100">{{$patient->phone}}</td>
                 <td class="wordbreak w150 h100">{{$patient->describediagnosis}}</td>
                 <td class="risk">{{$patient->risk}}</td>
                 <td class="wordbreak w150 h100">{{$patient->describesurgery}}</td>
@@ -141,7 +142,7 @@
         </table>
         <br>
         <!--Отображает список страниц при количестве записей более 50-->
-        {{$patients->links()}}
+        <div class="pagination-center">{{$patients->links()}}</div>
 </div>
 <div class="records-count">
    Records found: {{$patients->count()}}

@@ -125,6 +125,7 @@ class FollowupController extends Controller
         $followup->na=$request->input('na');
         $followup->k=$request->input('k');
         $followup->ca=$request->input('ca');
+        $followup->ca_ion=$request->input('ca_ion');
         $followup->cl=$request->input('cl');
         $followup->trig=$request->input('trig');
         $followup->chol=$request->input('chol');
@@ -180,7 +181,7 @@ class FollowupController extends Controller
         $followup->save();
         
         //для сохранения значений в полях формы после редиректа
-        return back()->withInput();
+        return redirect()->route('patients.show',['patient'=>$followup->patientid]);
     }
 
     /**
@@ -282,6 +283,7 @@ class FollowupController extends Controller
         $followup->na=$request->input('na');
         $followup->k=$request->input('k');
         $followup->ca=$request->input('ca');
+        $followup->ca_ion=$request->input('ca_ion');
         $followup->cl=$request->input('cl');
         $followup->trig=$request->input('trig');
         $followup->chol=$request->input('chol');
@@ -335,7 +337,7 @@ class FollowupController extends Controller
 
         $followup->save();
         
-        return back()->withInput();
+        return redirect()->route('patients.show',['patient'=>$followup->patientid]);
     }
 
     

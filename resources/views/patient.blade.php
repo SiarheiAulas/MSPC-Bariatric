@@ -31,7 +31,7 @@
             <td class="text-center w45 nooverflow", scope="col">{{$patient->height}}</td>
             <td class="text-center w70 wordbreak", scope="col">{{$patient->country}}</td>
             <td class="text-center w70 h100 wordbreak", scope="col">{{$patient->adress}}</td>
-            <td class="text-center w68 wordbreak", scope="col">{{$patient->phone}}</td>
+            <td class="text-center w68 h100 wordbreak", scope="col">{{$patient->phone}}</td>
         </tr>
     </table>
     <table  class="table table-hover table-bordered table-responsive my-table">
@@ -94,6 +94,7 @@
             <th class="text-center w55", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=na", target="iframe_patient">Sodium</a></th>
             <th class="text-center w45", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=k", target="iframe_patient">Potassium</a></th>
             <th class="text-center w45", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=ca", target="iframe_patient">Calcium (total)</a></th>
+            <th class="text-center w45", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=ca_ion", target="iframe_patient">Calcium (ionized)</a></th>
             <th class="text-center w55", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=cl", target="iframe_patient">Cloride</a></th>
             <th class="text-center w45", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=trig", target="iframe_patient">Triglyceride</a></th>
             <th class="text-center w45", scope="col"><a href="{{Route('ptchart', $patient->id)}}?param=chol", target="iframe_patient">Total cholesterol</a></th>
@@ -131,7 +132,7 @@
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->sad}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->dad}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->ejfract}}</td>
-            <td class="text-center w70 wordbreak", scope="col">{{$flwup->jointpath}}</td>
+            <td class="text-center w70 h100 wordbreak", scope="col">{{$flwup->jointpath}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->wbc}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->rbc}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->hgb}}</td>
@@ -147,6 +148,7 @@
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->na}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->k}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->ca}}</td>
+            <td class="text-center w45 nooverflow", scope="col">{{$flwup->ca_ion}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->cl}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->trig}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->chol}}</td>
@@ -166,7 +168,7 @@
             <td class="text-center date wordbreak scrollable", scope="col">{{$flwup->describensurgery}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->nsurgeryduration}}</td>
             <td class="text-center date", scope="col">{{$flwup->nsurgerydate}}</td>
-            <td class="text-center date wordbreak", scope="col">{{$flwup->describencomplication}}</td>
+            <td class="text-center h100 date wordbreak", scope="col">{{$flwup->describencomplication}}</td>
             <td class="text-center actions2", scope="col"><button><a href="{{Route('followups.edit', $flwup->id)}}">Edit</a></button></td>
             <td class="text-center actions2", scope="col">
                 <!--Потому что нельзя в методе формы писать delete или put -->

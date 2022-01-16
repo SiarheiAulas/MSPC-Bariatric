@@ -144,8 +144,7 @@ class PrimaryDataController extends Controller
         }
         
         $patient->save();
-        
-        return back()->withInput();
+        return redirect()->route('patients.index');
     
     }
 
@@ -290,7 +289,7 @@ class PrimaryDataController extends Controller
         
         $patient->save();
         
-        return back()->withInput();
+        return redirect()->route('patients.show',['patient'=>$patient]);
         
     }
     

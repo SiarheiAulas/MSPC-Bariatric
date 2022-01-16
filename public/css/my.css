@@ -5,7 +5,7 @@ a:active, a:visited, a:hover {text-decoration:none;color:#0056b3}
 footer {font-size:0.7em !important;position:fixed !important;bottom:0 !important;background-color:#f8f9fa!important}
 footer p {margin:0 auto !important}
 table tr {display:flex; width:100%}
-.id {min-width:65px; max-width:65px}
+.id {min-width:65px; max-width:65px; word-break: break-all}
 .name {min-width:114px; max-width:100px;}
 .w35 {min-width:35px; max-width:35px;overflow-x:auto}
 .w45 {min-width:45px; max-width:45px;overflow-x:auto;overflow-y:auto}
@@ -39,3 +39,5 @@ table tr {display:flex; width:100%}
 .align-center {max-width: 50%;margin:auto}
 .records-count{margin-bottom: 40px;}
 #welcome {margin:15%}
+.pagination-center{max-width: 20%; margin: auto}
+.page-item{margin: 2px}
