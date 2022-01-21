@@ -155,17 +155,17 @@
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->ldl}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$flwup->hdl}}</td>
             <td class="text-center w60", scope="col">{{$flwup->proteinuria}}</td>
-            <td class="text-center date wordbreak", scope="col">{{$flwup->endo}}</td>
-            <td class="text-center date wordbreak", scope="col">{{$flwup->us}}</td>
-            <td class="text-center date wordbreak", scope="col">{{$flwup->polysomno}}</td>
-            <td class="text-center date wordbreak", scope="col">{{$flwup->ct}}</td>
+            <td class="text-center h100 date wordbreak", scope="col">{{$flwup->endo}}</td>
+            <td class="text-center h100 date wordbreak", scope="col">{{$flwup->us}}</td>
+            <td class="text-center h100 date wordbreak", scope="col">{{$flwup->polysomno}}</td>
+            <td class="text-center h100 date wordbreak", scope="col">{{$flwup->ct}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->arthyper}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->dm}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->nash}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->malabs}}</td>
             <td class="text-center w80 wordbreak", scope="col">{{$flwup->medication}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->nsurgery}}</td>
-            <td class="text-center date wordbreak scrollable", scope="col">{{$flwup->describensurgery}}</td>
+            <td class="text-center h100 date wordbreak scrollable", scope="col">{{$flwup->describensurgery}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->nsurgeryduration}}</td>
             <td class="text-center date", scope="col">{{$flwup->nsurgerydate}}</td>
             <td class="text-center h100 date wordbreak", scope="col">{{$flwup->describencomplication}}</td>
