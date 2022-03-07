@@ -28,7 +28,7 @@ class PrimaryDataUpdateRequest extends FormRequest
              'firstname'=>'required|alpha_dash|min:2',
              'lastname'=>'nullable|alpha_dash|min:2',
              'sex'=>'required|alpha|min:1|max:1',
-             'phone'=>'nullable|numeric',
+             'phone'=>'nullable',
              'country'=>'required|alpha|min:2|max:30',
              'adress'=>'nullable|min:10',
              'diagnosis'=>'required|numeric|min:0|max:3|digits_between:1,1',

@@ -58,8 +58,14 @@
     <iframe class="iframe-patient", src="{{Route('chart')}}", title="chart", name="iframe_patient"></iframe>
     <div class="col-12 text-center">
         <h2>Follow-up data</h2>
-        <div class="text-justify">
+        <div class="text-justify patients-links">
             <a href="{{Route('followups.create')}}?param={{$patient->id}}">Add followup  data</a>
+        </div>
+        <div class="text-justify patients-links">
+            <a href="{{Route('patients.index')}}">Return to main page</a>
+        </div>
+        <div class="text-justify patients-links">
+            <a href="{{Route('dashboard')}}">Dashboard</a>
         </div>
     </div>
     <!--Таблица данных осмотров-->
@@ -163,7 +169,7 @@
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->dm}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->nash}}</td>
             <td class="text-center w35 nooverflow", scope="col">{{$flwup->malabs}}</td>
-            <td class="text-center w80 wordbreak", scope="col">{{$flwup->medication}}</td>
+            <td class="text-center w80 wordbreak h100", scope="col">{{$flwup->medication}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->nsurgery}}</td>
             <td class="text-center h100 date wordbreak scrollable", scope="col">{{$flwup->describensurgery}}</td>
             <td class="text-center w55 nooverflow", scope="col">{{$flwup->nsurgeryduration}}</td>

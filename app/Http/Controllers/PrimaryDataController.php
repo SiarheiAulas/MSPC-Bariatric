@@ -137,7 +137,9 @@ class PrimaryDataController extends Controller
         //формула классификации из диссертации (уравнение логит-регрессии)- функция-переключатель:сигмоида
         $p=1/(1+exp(-(A+($request->input('cl')*B_CL)+($request->input('hgb')*B_HGB))));
         
-        if($p>0.5){
+        if(!$request->input('hgb')||!$request->input('cl')){
+            $patient->risk='not defined';
+        }elseif($p>0.5){
             $patient->risk='high';
         }else{
             $patient->risk='low';

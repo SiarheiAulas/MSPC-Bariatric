@@ -62,6 +62,10 @@
             <input type="text", class="form-control", id="hgb", name="hgb", placeholder="Current level", value="{{$flwup->hgb}}">
         </div>
         <div class="col-2">
+            <label for="plt", class="form-label">PLT</label>
+            <input type="text", class="form-control", id="plt", name="plt", placeholder="Current level", value="{{$flwup->plt}}">
+        </div>
+        <div class="col-2">
             <label for="gluc", class="form-label">Glucose</label>
             <input type="text", class="form-control", id="gluc", name="gluc", placeholder="Current level", value="{{$flwup->gluc}}">
         </div>
