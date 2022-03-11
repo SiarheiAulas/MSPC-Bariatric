@@ -103,6 +103,16 @@ class FollowupController extends Controller
         
         //%TWL
         $followup->percenttwl=100*(($initialweight-$followup->weight)/$initialweight);
+        
+        //на случай, если в follow up нет данных о весе
+        if(!$followup->weight){
+            $followup->bmi=null;
+            $followup->percentewl=null;
+            $followup->ew=null;
+            $followup->percentbmil=null;
+            $followup->percentebmil=null;
+            $followup->percenttwl=null;
+        }
       
         //здесь все получаем из GET- запроса
         $followup->neck=$request->input('neck');
