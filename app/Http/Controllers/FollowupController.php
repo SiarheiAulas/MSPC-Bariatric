@@ -16,7 +16,7 @@ class FollowupController extends Controller
  public function index()
     {
      //по 50 на страницу
-       $flwups=Followup::paginate(50);
+       $flwups=Followup::orderBy('date','asc')->paginate(50);
      //передает все данный представлению patient
         return view('patient', compact('flwups'));
     }
@@ -57,63 +57,70 @@ class FollowupController extends Controller
         //получаем из таблицы patients значение роста для данного пациента (по его id), которое в дальнейшем будет считаться неизменным. 
         $patient=Patient::where('id', $request->input('patientid'))->first();
         $h=$patient->height;
-        
-        //расчет ИМТ
-        $followup->bmi=$request->input('weight')/pow(($h/100),2);
-        
-        // ideal body weight (bmi=25)
-        $followup->ibw=25*pow(($h/100),2);
-        
-        //excessive weight
-        $followup->ew=$request->input('weight')-$followup->ibw;
-        
-        //%EWL
         //1)get initial weight or return current if it is 1st record
         $wt=$request->input('weight');
         $initial=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($wt){
             return $wt;
         });
-        
         if (is_numeric($initial)){
-            $initialweight=$initial;
+          $initialweight=$initial;
+        }elseif(!$initial){
+            $initialweight=null;
         }else{
             $initialweight=$initial->weight;
         }
         
-        //2)calculate %EWL
-        $followup->percentewl=100*(($initialweight-$request->input('weight'))/($initialweight-$followup->ibw));
-        
-        //%BMIL
-        //1) get initial BMI
-        $bmi=$followup->bmi;
-        $initialbmindex=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($bmi){
-            return $bmi;
-        });
-        
-        if (is_numeric($initialbmindex)){
-            $initialbmi=$initialbmindex;
+        if(!$h){
+            $followup->bmi=$followup->ibw=$followup->ew=$followup->percentewl=$followup->percentbmil=$followup->percenttwl=null;
+        }elseif(!$followup->weight){
+                $followup->bmi=$followup->percentewl=$followup->ew=$followup->percentbmil=$followup->percentebmil=$followup->percenttwl=null;
+                $followup->ibw=25*pow(($h/100),2);
+        }elseif(!$initialweight){
+            //расчет ИМТ
+            $followup->bmi=$request->input('weight')/pow(($h/100),2);
+            
+            // ideal body weight (bmi=25)
+            $followup->ibw=25*pow(($h/100),2);
+            
+            //excessive weight
+            $followup->ew=$request->input('weight')-$followup->ibw;
+            $followup->percentewl=$followup->percentbmil=$followup->percentebmil=$followup->percenttwl=null;
         }else{
-            $initialbmi=$initialbmindex->bmi;
+            //расчет ИМТ
+            $followup->bmi=$request->input('weight')/pow(($h/100),2);
+            
+            // ideal body weight (bmi=25)
+            $followup->ibw=25*pow(($h/100),2);
+            
+            //excessive weight
+            $followup->ew=$request->input('weight')-$followup->ibw;
+            
+            //%EWL
+            $followup->percentewl=100*(($initialweight-$request->input('weight'))/($initialweight-$followup->ibw));
+            
+            //%BMIL
+            //1) get initial BMI
+            $bmi=$followup->bmi;
+            $initialbmindex=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($bmi){
+                return $bmi;
+            });
+            
+            if (is_numeric($initialbmindex)){
+                $initialbmi=$initialbmindex;
+            }else{
+                $initialbmi=$initialbmindex->bmi;
+            }
+           
+            //calculate %BMIL
+            $followup->percentbmil=100*(($initialbmi-$followup->bmi)/$initialbmi);
+            
+            //$EBMIL
+            $followup->percentebmil=100*(($initialbmi-$followup->bmi)/($initialbmi-25));
+            
+            //%TWL
+            $followup->percenttwl=100*(($initialweight-$followup->weight)/$initialweight);
         }
-        //calculate %BMIL
-        $followup->percentbmil=100*(($initialbmi-$followup->bmi)/$initialbmi);
         
-        //$EBMIL
-        $followup->percentebmil=100*(($initialbmi-$followup->bmi)/($initialbmi-25));
-        
-        //%TWL
-        $followup->percenttwl=100*(($initialweight-$followup->weight)/$initialweight);
-        
-        //на случай, если в follow up нет данных о весе
-        if(!$followup->weight){
-            $followup->bmi=null;
-            $followup->percentewl=null;
-            $followup->ew=null;
-            $followup->percentbmil=null;
-            $followup->percentebmil=null;
-            $followup->percenttwl=null;
-        }
-      
         //здесь все получаем из GET- запроса
         $followup->neck=$request->input('neck');
         $followup->sad=$request->input('sad');
@@ -192,6 +199,7 @@ class FollowupController extends Controller
         
         //для сохранения значений в полях формы после редиректа
         return redirect()->route('patients.show',['patient'=>$followup->patientid]);
+        //return dd($initialweight);
     }
 
     /**
@@ -228,51 +236,71 @@ class FollowupController extends Controller
         //получаем из таблицы patients значение роста для данного пациента (по его id), которое в дальнейшем будет считаться неизменным. 
         $patient=Patient::where('id', $request->input('patientid'))->first();
         $h=$patient->height;
-        $followup->bmi=$request->input('weight')/pow(($h/100),2);
-        
-        // ideal body weight (bmi=25)
-        $followup->ibw=25*pow(($h/100),2);
-        
-        //excessive weight
-        $followup->ew=$request->input('weight')-$followup->ibw;
-        
-        //%EWL
+
         //1)get initial weight or return current if it is 1st record
         $wt=$request->input('weight');
         $initial=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($wt){
             return $wt;
         });
-        
         if (is_numeric($initial)){
-            $initialweight=$initial;
+          $initialweight=$initial;
+        }elseif(!$initial){
+            $initialweight=null;
         }else{
             $initialweight=$initial->weight;
         }
         
-        //2)calculate %EWL
-        $followup->percentewl=100*(($initialweight-$request->input('weight'))/($initialweight-$followup->ibw));
-        
-        //%BMIL
-        //1) get initial BMI
-        $bmi=$followup->bmi;
-        $initialbmindex=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($bmi){
-            return $bmi;
-        });
-        
-        if (is_numeric($initialbmindex)){
-            $initialbmi=$initialbmindex;
+        if(!$h){
+            $followup->bmi=$followup->ibw=$followup->ew=$followup->percentewl=$followup->percentbmil=$followup->percenttwl=null;
+        }elseif(!$followup->weight){
+                $followup->bmi=$followup->percentewl=$followup->ew=$followup->percentbmil=$followup->percentebmil=$followup->percenttwl=null;
+                $followup->ibw=25*pow(($h/100),2);
+        }elseif(!$initialweight){
+            //расчет ИМТ
+            $followup->bmi=$request->input('weight')/pow(($h/100),2);
+            
+            // ideal body weight (bmi=25)
+            $followup->ibw=25*pow(($h/100),2);
+            
+            //excessive weight
+            $followup->ew=$request->input('weight')-$followup->ibw;
+            $followup->percentewl=$followup->percentbmil=$followup->percentebmil=$followup->percenttwl=null;
         }else{
-            $initialbmi=$initialbmindex->bmi;
+            //расчет ИМТ
+            $followup->bmi=$request->input('weight')/pow(($h/100),2);
+            
+            // ideal body weight (bmi=25)
+            $followup->ibw=25*pow(($h/100),2);
+            
+            //excessive weight
+            $followup->ew=$request->input('weight')-$followup->ibw;
+            
+            //%EWL
+            $followup->percentewl=100*(($initialweight-$request->input('weight'))/($initialweight-$followup->ibw));
+            
+            //%BMIL
+            //1) get initial BMI
+            $bmi=$followup->bmi;
+            $initialbmindex=Followup::where('patientid',$request->input('patientid'))->firstOr(function () use($bmi){
+                return $bmi;
+            });
+            
+            if (is_numeric($initialbmindex)){
+                $initialbmi=$initialbmindex;
+            }else{
+                $initialbmi=$initialbmindex->bmi;
+            }
+           
+            //calculate %BMIL
+            $followup->percentbmil=100*(($initialbmi-$followup->bmi)/$initialbmi);
+            
+            //$EBMIL
+            $followup->percentebmil=100*(($initialbmi-$followup->bmi)/($initialbmi-25));
+            
+            //%TWL
+            $followup->percenttwl=100*(($initialweight-$followup->weight)/$initialweight);
         }
-        //calculate %BMIL
-        $followup->percentbmil=100*(($initialbmi-$followup->bmi)/$initialbmi);
         
-        //$EBMIL
-        $followup->percentebmil=100*(($initialbmi-$followup->bmi)/($initialbmi-25));
-        
-        //%TWL
-        $followup->percenttwl=100*(($initialweight-$followup->weight)/$initialweight);
-      
         $followup->neck=$request->input('neck');
         $followup->sad=$request->input('sad');
         $followup->dad=$request->input('dad');

@@ -19,7 +19,7 @@ class PrimaryDataController extends Controller
      */
     public function index()
     {
-        $patients=Patient::paginate(50);
+        $patients=Patient::orderBy('surgerydate','desc')->paginate(50);
         return view('main', compact('patients'));
     }
 
