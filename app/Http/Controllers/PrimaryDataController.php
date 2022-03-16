@@ -278,7 +278,7 @@ class PrimaryDataController extends Controller
         $patient->complicated=$request->input('complicated');  
         $patient->describecomplications=$request->input('describecomplications');
         
-        define('A', 22.85029);
+        /*define('A', 22.85029);
         define('B_CL', -0.40768);
         define('B_HGB', 0.11387);
         $p=1/(1+exp(-(A+($request->input('cl')*B_CL)+($request->input('hgb')*B_HGB))));
@@ -288,7 +288,7 @@ class PrimaryDataController extends Controller
         }else{
             $patient->risk='low';
         }  
-        
+        */
         $patient->save();
         
         return redirect()->route('patients.show',['patient'=>$patient]);
