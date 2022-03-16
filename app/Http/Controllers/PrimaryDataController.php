@@ -278,17 +278,20 @@ class PrimaryDataController extends Controller
         $patient->complicated=$request->input('complicated');  
         $patient->describecomplications=$request->input('describecomplications');
         
-        /*define('A', 22.85029);
+        $flwup=Followup::where('patientid', $patient->id)->first();
+        $hb=$flwup->hgb;
+        $cl=$flwup->cl;
+        define('A', 22.85029);
         define('B_CL', -0.40768);
         define('B_HGB', 0.11387);
-        $p=1/(1+exp(-(A+($request->input('cl')*B_CL)+($request->input('hgb')*B_HGB))));
+        $p=1/(1+exp(-(A+($cl*B_CL)+($hb*B_HGB))));
         
         if($p>0.5){
             $patient->risk='high';
         }else{
             $patient->risk='low';
         }  
-        */
+        
         $patient->save();
         
         return redirect()->route('patients.show',['patient'=>$patient]);
