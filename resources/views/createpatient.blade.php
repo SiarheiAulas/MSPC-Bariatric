@@ -65,14 +65,14 @@
                 <label for="age", class="form-label">Age:</label>
                 <input type="text", class="form-control", id="age", name="age", placeholder="Age at operation", value="{{old('age')}}">
             </div>
-            <div class="col-2">
+            <!--<div class="col-2">
                 <label for="cl", class="form-label">Chloride</label>
                 <input type="text", class="form-control", id="cl", name="cl", placeholder="Cl (risk estimation)", value="{{old('cl')}}">
             </div>
             <div class="col-2">
                 <label for="hgb", class="form-label">Hemoglobin</label>
                 <input type="text", class="form-control", id="hgb", name="hgb", placeholder="Hb (risk estimation)", value="{{old('hgb')}}">
-            </div>
+            </div>-->
             <div class="col-2">
                 <label for="surgery", class="form-label">Surgery (code):</label>
                 <input type="text", class="form-control", id="surgery", name="surgery", placeholder="lsg/mgb/rygb/lagb/gp/other/none", value="{{old('surgery')}}">

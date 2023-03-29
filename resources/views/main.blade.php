@@ -87,7 +87,7 @@
         </div>
         <div class="pagination-center">{{$patients->links()}}</div>
         <!--Таблица основных данных пациентов. Данные из модели передаются контроллером-->
-        <table class="table table-hover table-bordered table-responsive", width="100%">
+        <table class="table table-hover table-bordered table-responsive ", width="100%">
             <tr>
                 <th class="text-center id", scope="col">Card ID</th>
                 <th class="text-center name", scope="col">Surname</th>
@@ -101,7 +101,7 @@
                 <th class="text-center w70", scope="col">Adress</th>
                 <th class="text-center w70", scope="col">Phone</th>
                 <th class="text-center w150 nooverflow", scope="col"><a href="{{Route('chart')}}?param=diagnosis", target="iframe_main">Diagnosis</a></th>
-                <th class="text-center risk", scope="col"><a href="{{Route('chart')}}?param=risk", target="iframe_main">Risk</a></th>
+                <!--<th class="text-center risk", scope="col"><a href="{{Route('chart')}}?param=risk", target="iframe_main">Risk</a></th>-->
                 <th class="text-center w150 nooverflow", scope="col"><a href="{{Route('chart')}}?param=surgery", target="iframe_main">Surgery</a></th>
                 <th class="text-center date", scope="col">Surgery date</th>
                 <th class="text-center w45", scope="col"><a href="{{Route('chart')}}?param=surgeryduration", target="iframe_main">Surgery duration</a></th>
@@ -123,7 +123,7 @@
                 <td class="w70 wordbreak h100">{{$patient->adress}}</td>
                 <td class="w70 wordbreak h100">{{$patient->phone}}</td>
                 <td class="wordbreak w150 h100">{{$patient->describediagnosis}}</td>
-                <td class="risk">{{$patient->risk}}</td>
+                <!--<td class="risk">{{$patient->risk}}</td>-->
                 <td class="wordbreak w150 h100">{{$patient->describesurgery}}</td>
                 <td class="date">{{$patient->surgerydate}}</td>
                 <td class="w45 nooverflow">{{$patient->surgeryduration}}</td>

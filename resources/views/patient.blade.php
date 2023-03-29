@@ -37,7 +37,7 @@
     <table  class="table table-hover table-bordered table-responsive my-table">
         <tr>
             <th class="text-center w150", scope="col">Diagnosis</th>
-            <th class="text-center risk", scope="col">Risk</th>
+            <!--<th class="text-center risk", scope="col">Risk</th>-->
             <th class="text-center w150", scope="col">Surgery</th>
             <th class="text-center date", scope="col">Surgery date</th>
             <th class="text-center w45", scope="col">Surgery duration</th>
@@ -46,7 +46,7 @@
         </tr>
         <tr>
             <td class="text-center w150 h100 wordbreak", scope="col">{{$patient->describediagnosis}}</td>
-            <td class="text-center risk h100 nooverflow">{{$patient->risk}}</td>
+            <!--<td class="text-center risk h100 nooverflow">{{$patient->risk}}</td>-->
             <td class="text-center w150 h100 wordbreak", scope="col">{{$patient->describesurgery}}</td>
             <td class="text-center date", scope="col">{{$patient->surgerydate}}</td>
             <td class="text-center w45 nooverflow", scope="col">{{$patient->surgeryduration}}</td>

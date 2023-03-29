@@ -131,19 +131,19 @@ class PrimaryDataController extends Controller
         $patient->describecomplications=$request->input('describecomplications');
         
         //расчет риска по формуле логит-регрессии из диссертации
-        define('A', 22.85029); //константа
-        define('B_CL', -0.40768);//коэффициент корреляции для гемоглобина
-        define('B_HGB', 0.11387); //коэффициент корреляции для гемоглобина
-        //формула классификации из диссертации (уравнение логит-регрессии)- функция-переключатель:сигмоида
-        $p=1/(1+exp(-(A+($request->input('cl')*B_CL)+($request->input('hgb')*B_HGB))));
-        
-        if(!$request->input('hgb')||!$request->input('cl')){
-            $patient->risk='not defined';
-        }elseif($p>0.5){
-            $patient->risk='high';
-        }else{
-            $patient->risk='low';
-        }
+       // define('A', 22.85029); //константа
+       // define('B_CL', -0.40768);//коэффициент корреляции для гемоглобина
+       // define('B_HGB', 0.11387); //коэффициент корреляции для гемоглобина
+       // //формула классификации из диссертации (уравнение логит-регрессии)- функция-переключатель:сигмоида
+       // $p=1/(1+exp(-(A+($request->input('cl')*B_CL)+($request->input('hgb')*B_HGB))));
+       // 
+       // if(!$request->input('hgb')||!$request->input('cl')){
+       //     $patient->risk='not defined';
+       // }elseif($p>0.5){
+       //     $patient->risk='high';
+       // }else{
+       //     $patient->risk='low';
+       // }
         
         $patient->save();
         return redirect()->route('patients.index');
@@ -278,19 +278,19 @@ class PrimaryDataController extends Controller
         $patient->complicated=$request->input('complicated');  
         $patient->describecomplications=$request->input('describecomplications');
         
-        $flwup=Followup::where('patientid', $patient->id)->first();
-        $hb=$flwup->hgb;
-        $cl=$flwup->cl;
-        define('A', 22.85029);
-        define('B_CL', -0.40768);
-        define('B_HGB', 0.11387);
-        $p=1/(1+exp(-(A+($cl*B_CL)+($hb*B_HGB))));
-        
-        if($p>0.5){
-            $patient->risk='high';
-        }else{
-            $patient->risk='low';
-        }  
+       // $flwup=Followup::where('patientid', $patient->id)->first();
+       // $hb=$flwup->hgb;
+       // $cl=$flwup->cl;
+       // define('A', 22.85029);
+       // define('B_CL', -0.40768);
+       // define('B_HGB', 0.11387);
+       // $p=1/(1+exp(-(A+($cl*B_CL)+($hb*B_HGB))));
+       // 
+       // if($p>0.5){
+       //     $patient->risk='high';
+       // }else{
+       //     $patient->risk='low';
+       // }  
         
         $patient->save();
         

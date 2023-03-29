@@ -26,7 +26,7 @@ class CreatePatients extends Migration
             $table->text('describediagnosis');
             $table->date('birthdate');
             $table->integer('age');
-            $table->string('risk')->nullable();
+            //$table->string('risk')->nullable();
             $table->string('surgery')->nullable();
             $table->string('surgerytype')->nullable();
             $table->integer('bandedprocedure');
